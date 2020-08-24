@@ -8,6 +8,3 @@ node_modules/*
 !node_modules/spotify-web-api-node/
 
 node_modules/spotify-web-api-node/src/
-!node_modules/spotify-web-api-node/src/*
-
-node_modules/spotify-web-api-node/src/spotify-web-api.js
