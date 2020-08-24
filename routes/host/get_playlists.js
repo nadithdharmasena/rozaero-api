@@ -8,7 +8,7 @@ let spotify_ops = require('../../helpers/spotify_ops');
 /**
  * URL: /get_playlists
  *
- * @description: Returns a list of host-owned playlists associated with the given Spotify display name
+ * @description: Returns a list of playlists owned by the Spotify user associated with the given display name
  * @param token: Authorization token of user
  * @param display_name: Spotify display name associated with the party
  */

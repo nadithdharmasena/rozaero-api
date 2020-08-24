@@ -10,7 +10,7 @@ let tracks = require('../../helpers/guest/tracks');
 /**
  * URL: /tracks
  *
- * @description: Returns the tracks with associated with the party code
+ * @description: Returns the tracks associated with the given party code
  * @param token: Authorization token for user
  * @param id: Party ID of party whose tracks are being requested
  */

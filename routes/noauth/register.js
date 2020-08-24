@@ -117,7 +117,7 @@ router.post('/', function(req, res, next) {
 /**
  * URL: /register/validate
  *
- * @description: Validates the emails of the given username and activates the account
+ * @description: Validates the email of the given username and activates the account
  * @param: username: Username of the newly created but non-activated account
  * @param: code: Activation code of the newly created but non-activated account
  *

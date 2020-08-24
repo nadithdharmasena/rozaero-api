@@ -1,13 +1,11 @@
 let mongo = require('mongodb').MongoClient;
 const assert = require('assert');
 
-var accountsObj; // Accounts collection object
-var tracksObj; // Tracks collection object
-var partiesObj; // Parties collection object
-var tokensObj; // Tokens collection object
-var imagesObj; // Images collection object
-var forgottenObj; // Forgotten collection object
-var errorObj; // Error object
+let accountsObj; // Accounts collection object
+let tracksObj; // Tracks collection object
+let partiesObj; // Parties collection object
+let tokensObj; // Tokens collection object
+let errorObj; // Error object
 
 // Connection URL
 const url = 'mongodb://djvadmin:musical@localhost:27017/?authMechanism=SCRAM-SHA-1&authSource=DJV';
@@ -34,11 +32,11 @@ mongo.connect(url, options, function(error, client){
             }
         });
 
-        DJV.collection("Tracks", function(error, tracks) {
+        DJV.collection("Tokens", function(error, tokens) {
             if (!error) {
-                tracksObj = tracks;
+                tokensObj = tokens;
             } else {
-                tracksObj = false;
+                tokensObj = false;
                 errorObj = error;
             }
         });
@@ -52,29 +50,11 @@ mongo.connect(url, options, function(error, client){
             }
         });
 
-        DJV.collection("Tokens", function(error, tokens) {
+        DJV.collection("Tracks", function(error, tracks) {
             if (!error) {
-                tokensObj = tokens;
+                tracksObj = tracks;
             } else {
-                tokensObj = false;
-                errorObj = error;
-            }
-        });
-
-        DJV.collection("Images", function(error, images) {
-            if (!error) {
-                imagesObj = images;
-            } else {
-                imagesObj = false;
-                errorObj = error;
-            }
-        });
-
-        DJV.collection("Forgotten", function(error, forgotten) {
-            if (!error) {
-                forgottenObj = forgotten;
-            } else {
-                forgottenObj = false;
+                tracksObj = false;
                 errorObj = error;
             }
         });

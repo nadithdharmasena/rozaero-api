@@ -14,30 +14,12 @@ let dbs = require('../../global_modules/dbs');
  */
 router.post('/', function(req, res, next) {
 
-    const TOKEN = req.body.token;
+    let account = res.locals.user;
+    let account_info = {
+        username: account.username
+    };
 
-    let accounts_promise = dbs.accountsObject().find({token: TOKEN}).toArray();
-
-    accounts_promise.then(
-        function (accounts_array) {
-            if (accounts_array.length > 0) {
-
-                let account = accounts_array[0];
-                let account_info = {
-                    username: account.username
-                };
-
-                response.successResponse(res, account_info);
-
-            } else {
-                response.noUserAssociatedResponse(res);
-            }
-        }
-    ).catch(
-        function (error) {
-            response.databaseErrorResponse(res);
-        }
-    );
+    response.successResponse(res, account_info);
 
 });
 

@@ -14,7 +14,7 @@ let login = require('../../helpers/noauth/login');
  * @description: Validates the given credentials and returns an
  *               access token
  * @param: email_address: Email address associated with account
- * @param: password: Self-explanatory
+ * @param: password: Password associated with account
  */
 router.post('/', function(req, res, next) {
 

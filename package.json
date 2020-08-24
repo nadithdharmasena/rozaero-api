@@ -15,5 +15,8 @@
     "mongodb": "^3.3.0",
     "morgan": "~1.9.0",
     "spotify-web-api-node": "^4.0.0"
+  },
+  "devDependencies": {
+    "request": "^2.88.2"
   }
 }

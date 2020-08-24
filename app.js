@@ -14,11 +14,11 @@ let index = require('./routes/index');
 let login = require('./routes/noauth/login');
 let register = require('./routes/noauth/register');
 
+let get_party = require('./routes/guest/get_party');
 let user_info = require('./routes/guest/user_info');
 let close = require('./routes/guest/close');
 let my_parties = require('./routes/guest/my_parties');
 let tracks = require('./routes/guest/tracks');
-let get_party = require('./routes/guest/get_party');
 let add_vote = require('./routes/guest/add_vote');
 
 let create_party = require('./routes/host/create_party');
@@ -49,11 +49,11 @@ app.use('/register', register);
 // All routes below following middleware are protected by authorization
 app.use(guarantee_rozaero_token);
 
+app.use('/get_party', get_party);
 app.use('/user_info', user_info);
 app.use('/close', close);
 app.use('/my_parties', my_parties);
 app.use('/tracks', tracks);
-app.use('/get_party', get_party);
 app.use('/add_vote', add_vote);
 
 // All routes below following middleware require a Spotify display name,
