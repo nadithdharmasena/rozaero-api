@@ -13,7 +13,7 @@ Rozaero is a cooperative playlist generator that allows guests to influence the 
 The following endpoints service the operational needs of Rozaero's front-end iOS application. Each endpoint's inputs
 are outlined in the headers of their respective implementation files. These implementation files are housed in `routes`.
 
-#### Login and Registration Operations
+### Login and Registration Operations
 
 * /login
     * Validates the given credentials and returns a RAT
@@ -22,7 +22,7 @@ are outlined in the headers of their respective implementation files. These impl
 * /register/validate
     * Validates the email of the given username and activates the account
 
-#### Primary Operations
+### Primary Operations
 These endpoints will be used extensively by party guests as they are using the Rozaero mobile app.
 
 * /close
@@ -40,7 +40,7 @@ These endpoints will be used extensively by party guests as they are using the R
 * /search_tracks
     * Returns general search results (for tracks) given a search string
     
-#### Host Operations
+### Host Operations
 These endpoints are to be used by hosts to create and manage their parties.
 
 * /get_playlists
@@ -50,7 +50,7 @@ These endpoints are to be used by hosts to create and manage their parties.
 * /play
     * Tells Spotify to play new song and updates internal tracking to reflect new currently playing song
 
-#### Internal Operations
+### Internal Operations
 These endpoints are used by Rozaero's internal scripts to transition songs when they end.
 
 * /refresh_track
@@ -73,7 +73,7 @@ necessary to accomplish some tasks.
 
 ## Notes
 
-#### Modified Spotify API Node Driver
+### Modified Spotify API Node Driver
 
 This application implements the Spotify Web API Node driver. However, important modifications have been made to this driver
 to facilitate some Rozaero operations. Therefore, it should be noted that simply running `npm install` in this
@@ -81,7 +81,7 @@ project will not yield a runnable application.
 
 The modified Spotify API Node driver has been included in the node_modules folder. Anyone who would like to run this Node server for observation purposes must paste that file, `spotify-web-api.js`, into the `node_modules/spotify-web-api-node/src` folder after running `npm install`.
 
-#### MongoDB Setup
+### MongoDB Setup
 
 Observers must also create and configure a MongoDB instance on his or her local machine. In addition to the normal setup
 operations like creating a database folder (usually @ /data/db), observers must also create a Mongo database called "DJV" and
