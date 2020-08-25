@@ -80,6 +80,10 @@ Observers can use this testing page to access endpoints that are unreachable to 
 
 ## Notes
 
+### Mobile Application
+
+The mobile application that uses this API to implement the described functionalities is located at [Rozaero UI](https://github.com/nadithdharmasena/rozaero-ui).
+
 ### Modified Spotify API Node Driver
 
 This application implements the Spotify Web API Node driver. However, important modifications have been made to this driver
