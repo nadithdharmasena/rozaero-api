@@ -44,18 +44,19 @@ router.post('/', function(req, res, next) {
                     const TRACK_UPDATE_OPERATOR = play.getTracksUpdateOperator(PARTY.id, spotify_ops);
 
                     // Update currently playing song in Parties
-                    dbs.partiesObject().update(PARTY_UPDATE_QUERY, PARTY_UPDATE_OPERATOR);
+                    dbs.partiesObject().updateOne(PARTY_UPDATE_QUERY, PARTY_UPDATE_OPERATOR);
 
                     // Update last played time of new currently playing song
-                    dbs.tracksObject().update(TRACK_UPDATE_QUERY, TRACK_UPDATE_OPERATOR);
+                    dbs.tracksObject().updateOne(TRACK_UPDATE_QUERY, TRACK_UPDATE_OPERATOR);
 
                     // Notify system that a new song has begun
-                    spotify_ops.songPlayedEmitter().emit(party.code);
+                    spotify_ops.songPlayedEmitter().emit(PARTY.code);
                     response.successResponse(res, TRACK_ID);
 
                 }
             ).catch(
                 function (error) {
+                    console.log(error);
                     response.databaseErrorResponse(res);
                 }
             );

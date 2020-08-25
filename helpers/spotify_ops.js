@@ -3,7 +3,7 @@ let events = require('events');
 
 let spotify_ops = {
 
-    stateKey: 'spotify_auth_state',
+    state_key: 'spotify_auth_state',
 
     credentials: {
         client_id: process.env.client_id, // Your Spotify client id

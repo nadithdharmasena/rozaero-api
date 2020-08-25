@@ -1,6 +1,8 @@
 let express = require('express');
 let router = express.Router();
 
+let request = require('request');
+
 let response = require('../../global_modules/response');
 let dbs = require('../../global_modules/dbs');
 
@@ -73,36 +75,25 @@ router.post('/', function(req, res, next) {
 
                                 let new_current_track = tracksArray[0];
 
-                                const PARTY_UPDATE_QUERY = refresh_track.getPartiesUpdateQuery(party.id);
-                                const PARTY_UPDATE_OPERATOR = refresh_track.getPartiesUpdateOperator(new_current_track);
+                                let req_options = {
+                                    url: 'http://localhost:3000/play',
+                                    form: {
+                                        token: res.locals.user.token,
+                                        display_name: party.display_name,
+                                        code: party.code,
+                                        track_id: new_current_track.track.id
+                                    },
+                                    json: true
+                                };
 
-                                const TRACK_UPDATE_QUERY = refresh_track.getTracksUpdateQuery(new_current_track);
-                                const TRACK_UPDATE_OPERATOR = refresh_track.getTracksUpdateOperator(party.id, spotify_ops);
+                                request.post(req_options, function (error, play_response, body) {
 
-                                // Generate formatted Spotify track URI
-                                const TRACK_URI = spotify_ops.makeTrackURI(new_current_track.track.id);
-
-                                // Tell Spotify to play new song
-                                let play_promise = spotify_ops.getSpotifyApi().rozaero_play({uris: [TRACK_URI]}, res.locals.access_token);
-
-                                play_promise.then(
-                                    function (data) {
-
-                                        // Update currently playing song in Parties
-                                        dbs.partiesObject().update(PARTY_UPDATE_QUERY, PARTY_UPDATE_OPERATOR);
-
-                                        // Update last played time of new currently playing song
-                                        dbs.tracksObject().update(TRACK_UPDATE_QUERY, TRACK_UPDATE_OPERATOR);
-
-                                        // Notify system that a new song has begun
-                                        spotify_ops.songPlayedEmitter().emit(party.code);
+                                    if (body.status === 200)
                                         response.successResponse(res, "");
-                                    }
-                                ).catch(
-                                    function (error) {
-                                        response.spotifyErrorResponse(res);
-                                    }
-                                );
+                                    else
+                                        response.databaseErrorResponse(res);
+
+                                });
 
                             }
                         ).catch(

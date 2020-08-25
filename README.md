@@ -76,7 +76,7 @@ necessary to accomplish some tasks.
 There is a primitive testing web page included at `views/index.ejs`. Observers can access this page by running the server and
 navigating to `http://localhost:3000/`. 
 
-Observers can use this testing page to access endpoints that are unreachable to the iOS app, like `/get_playlists`, `/create_party`, and `/play`. These endpoints are meant to be accessed by a host through a desktop Rozaero application. Of course, no such desktop application has been developed, yet.
+Observers can use this testing page to access endpoints that are unreachable to the iOS app, like `/get_playlists`, `/create_party`, and `/play`. These endpoints are meant to be accessed by a host through a desktop Rozaero application, which is yet to be developed.
 
 ## Notes
 

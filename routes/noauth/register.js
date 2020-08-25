@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
         return;
     }
 
-    if (globals.email_regexp.test(EMAIL_ADDRESS) && USERNAME.length < 16) {
+    if (globals.email_regexp.test(EMAIL_ADDRESS) && USERNAME.length <= 24) {
 
         dbs.accountsObject().countDocuments({username: USERNAME}).then(
             function (count) {

@@ -8,6 +8,7 @@
         <script src="/javascripts/handleCreateParty.js" type="text/javascript"></script>
         <script src="/javascripts/handlePlay.js" type="text/javascript"></script>
         <script src="/javascripts/handleSearchTracks.js" type="text/javascript"></script>
+        <script src="/javascripts/handleRefreshTrack.js" type="text/javascript"></script>
 
         <style>
 
@@ -101,6 +102,18 @@
             <input id="page" placeholder="Page" type="text" /> <br />
 
             <button onclick="handleSearchTracks()">Search Tracks</button>
+
+        </div>
+
+        <div class="container">
+
+            <h3>Test /refresh_track</h3>
+
+            <input id="token5" placeholder="Token" type="text"/> <br />
+            <input id="display_name5" placeholder="Display Name" type="text"/> <br />
+            <input id="code2" placeholder="Code" type="text" /> <br />
+
+            <button onclick="handleRefreshTrack()">Refresh Track</button>
 
         </div>
 

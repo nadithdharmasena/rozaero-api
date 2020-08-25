@@ -3,10 +3,14 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let dotenv = require('dotenv').config();
 
 let guarantee_rozaero_token = require('./routes/middleware/guarantee_rozaero_token');
 let guarantee_spotify_token = require('./routes/middleware/guarantee_spotify_token');
 let guarantee_party_code = require('./routes/middleware/guarantee_party_code');
+
+let spotify_login = require('./routes/host/spotify_login');
+let spotify_callback = require('./routes/host/spotify_callback');
 
 // For testing, include index
 let index = require('./routes/index');
@@ -45,6 +49,10 @@ app.use('/', index);
 
 app.use('/login', login);
 app.use('/register', register);
+
+// The following Spotify routes allow users to grant Rozaero access to their Spotify accounts
+app.use('/spotify_login', spotify_login);
+app.use('/spotify_callback', spotify_callback);
 
 // All routes below following middleware are protected by authorization
 app.use(guarantee_rozaero_token);
